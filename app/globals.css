@@ -155,4 +155,7 @@ a {
   flex-direction: column;
   background-color: #ffffff20;
   backdrop-filter: blur(10px);
+
+  /* overflow-y: auto;
+  max-height: 50vh; */
 }

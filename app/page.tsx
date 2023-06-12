@@ -1,6 +1,7 @@
 import styles from "./page.module.css";
 import * as d3 from "d3";
 import ShopItems from "@/components/ShopItems";
+import { Item } from "@/components/types";
 
 export default async function Home() {
   async function addItem() {
@@ -12,13 +13,23 @@ export default async function Home() {
       .csvParseRows(text)
       // .filter((d) => d[3] !== "")
       .map((d, key) => {
+        console.log("d---->", d);
         d[0] = key + "";
-        return d;
+        return {
+          id: key,
+          uid: d[1],
+          image: d[2],
+          name: d[3],
+          volume: d[4],
+          priceWhosale: d[5],
+          priceRetail: d[6],
+        };
       });
 
     return data.splice(8);
   }
-  const data = await addItem();
+  const data = (await addItem()) as Item[];
+  console.log("data", data);
 
   return (
     <main className={styles.main}>

@@ -1,19 +1,21 @@
 "use client";
 import { useState } from "react";
 import ShopItem from "@/components/ShopItem";
+import { Item } from "@/components/types";
 
-const ShopItems = ({ data }: { data: string[][] }) => {
-  const [order, setOrder] = useState<string[][]>([]);
+const ShopItems = ({ data }: { data: Item[] }) => {
+  const [order, setOrder] = useState<Item[]>([]);
 
   console.log("data", data);
 
-  const handleAddItem = (item: string[]) => {
+  const handleAddItem = (item: Item) => {
     console.log("item", item);
     console.log("order", order);
     setOrder((prevOrder) => [...prevOrder, item]);
   };
 
-  const handleRemoveItem = (item: string[]) => {
+  const handleRemoveItem = (item: Item) => {
+    console.log("order", order);
     console.log("item", item);
   };
 
@@ -21,10 +23,10 @@ const ShopItems = ({ data }: { data: string[][] }) => {
     <>
       <div className="shopping-cart">
         Order
-        {order.map((d) => (
+        {order.map((d, key) => (
           <ShopItem
             data={d}
-            key={d[0]}
+            key={key}
             handleAddItem={handleAddItem}
             handleRemoveItem={handleRemoveItem}
           />
@@ -34,7 +36,7 @@ const ShopItems = ({ data }: { data: string[][] }) => {
         {data.map((d) => (
           <ShopItem
             data={d}
-            key={d[0]}
+            key={d.id}
             handleAddItem={handleAddItem}
             handleRemoveItem={handleRemoveItem}
           />

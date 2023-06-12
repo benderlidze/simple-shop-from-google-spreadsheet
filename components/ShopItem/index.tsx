@@ -1,17 +1,14 @@
-interface ShopItem {
-  data: string[];
-  handleAddItem: (data: string[]) => void;
-  handleRemoveItem: (data: string[]) => void;
-}
+import { ShopItem } from "@/components/types";
 
 const ShopItem = ({ data, handleAddItem, handleRemoveItem }: ShopItem) => {
   return (
     <div className="inline">
-      <div>{data[1]}</div>
-      <div>{data[2]}</div>
-      <div>{data[3]}</div>
-      <div>{data[4]}</div>
-      <div>{data[5]}</div>
+      <div>{data.id}</div>
+      <div>{data.uid}</div>
+      <div>{data.name}</div>
+      <div>{data.volume}</div>
+      <div>{data.priceRetail} pln</div>
+      <div>{data.priceWhosale} pln</div>
       <div className="button" onClick={() => handleAddItem(data)}>
         +
       </div>
