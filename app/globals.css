@@ -111,7 +111,9 @@ a {
 .inline {
   display: flex;
   margin: 5px 0px;
+  border-bottom: 1px solid #eee;
 }
+
 .inline > div {
   display: flex;
   align-items: center;
@@ -158,4 +160,10 @@ a {
 
   /* overflow-y: auto;
   max-height: 50vh; */
+}
+
+.shopping-cart-order-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }

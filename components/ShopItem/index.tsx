@@ -1,6 +1,18 @@
-import { ShopItem } from "@/components/types";
+import { Item } from "@/components/types";
 
-const ShopItem = ({ data, handleAddItem, handleRemoveItem }: ShopItem) => {
+interface ShopItemProps {
+  data: Item;
+  handleAddItem: (data: Item) => void;
+  handleRemoveItem: (data: Item) => void;
+  children?: React.ReactNode;
+}
+
+const ShopItem = ({
+  data,
+  handleAddItem,
+  handleRemoveItem,
+  children,
+}: ShopItemProps) => {
   return (
     <div className="inline">
       <div>{data.id}</div>
@@ -9,6 +21,7 @@ const ShopItem = ({ data, handleAddItem, handleRemoveItem }: ShopItem) => {
       <div>{data.volume}</div>
       <div>{data.priceRetail} pln</div>
       <div>{data.priceWhosale} pln</div>
+      {children}
       <div className="button" onClick={() => handleAddItem(data)}>
         +
       </div>

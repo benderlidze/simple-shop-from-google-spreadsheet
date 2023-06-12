@@ -8,8 +8,7 @@ export interface Item {
   priceRetail: string;
 }
 
-export interface ShopItem {
-  data: Item;
-  handleAddItem: (data: Item) => void;
-  handleRemoveItem: (data: Item) => void;
+export interface Order {
+  item: Item;
+  quantity: number;
 }
