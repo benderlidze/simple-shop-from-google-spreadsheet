@@ -40,30 +40,50 @@ const ShopItems = ({ data }: { data: Item[] }) => {
     <>
       <div className="shopping-cart">
         Order
-        {orders.map((d, key) => (
-          <div className="shopping-cart-order-item">
-            {d.quantity > 0 && (
-              <ShopItem
-                data={d.item}
-                key={key}
-                handleAddItem={handleAddItem}
-                handleRemoveItem={handleRemoveItem}
-              >
-                <div>{d.quantity}</div>
-              </ShopItem>
-            )}
-          </div>
-        ))}
+        <div className="shopping-cart-order-item">
+          <table>
+            <tbody>
+              {orders.map((d, key) => (
+                <>
+                  {d.quantity > 0 && (
+                    <ShopItem
+                      data={d.item}
+                      key={key}
+                      handleAddItem={handleAddItem}
+                      handleRemoveItem={handleRemoveItem}
+                    >
+                      <td>{d.quantity}</td>
+                    </ShopItem>
+                  )}
+                </>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
       <div>
-        {data.map((d) => (
-          <ShopItem
-            data={d}
-            key={d.id}
-            handleAddItem={handleAddItem}
-            handleRemoveItem={handleRemoveItem}
-          />
-        ))}
+        <table>
+          <thead>
+            <tr className="red">
+              <th className="item-uid">image</th>
+              <th className="item-uid">UID</th>
+              <th className="item-name">Name</th>
+              <th>Objętość</th>
+              <th>Cena (hurtowa) pln</th>
+              <th>Cena (detal) pln</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.map((d) => (
+              <ShopItem
+                data={d}
+                key={d.id}
+                handleAddItem={handleAddItem}
+                handleRemoveItem={handleRemoveItem}
+              />
+            ))}
+          </tbody>
+        </table>
       </div>
     </>
   );

@@ -14,15 +14,14 @@ export default async function Home() {
       // .filter((d) => d[3] !== "")
       .map((d, key) => {
         console.log("d---->", d);
-        d[0] = key + "";
         return {
           id: key,
           uid: d[1],
-          image: d[2],
+          image: d[0],
           name: d[3],
           volume: d[4],
-          priceWhosale: d[5],
-          priceRetail: d[6],
+          priceWhosale: d[8],
+          priceRetail: d[9],
         };
       });
 

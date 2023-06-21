@@ -1,4 +1,5 @@
 import { Item } from "@/components/types";
+import Image from "next/image";
 
 interface ShopItemProps {
   data: Item;
@@ -14,21 +15,42 @@ const ShopItem = ({
   children,
 }: ShopItemProps) => {
   return (
-    <div className="inline">
-      <div>{data.id}</div>
-      <div>{data.uid}</div>
-      <div>{data.name}</div>
-      <div>{data.volume}</div>
-      <div>{data.priceRetail} pln</div>
-      <div>{data.priceWhosale} pln</div>
+    <tr>
+      <td>
+        {data.image && (
+          <img
+            className="item-image"
+            src={data.image}
+            width={100}
+            height={100}
+            alt={data.name}
+          />
+        )}
+      </td>
+      {/* <td className="item-uid">{data.uid}</td>
+      <td className="item-name">{data.name}</td>
+      <td>{data.volume}</td> */}
+      <td className="item-name">
+        {data.uid}
+        <br />
+        <b>{data.name}</b>
+        <br />
+        {data.volume}
+      </td>
+      <td>{data.priceRetail}</td>
+      <td>{data.priceWhosale}</td>
       {children}
-      <div className="button" onClick={() => handleAddItem(data)}>
-        +
-      </div>
-      <div className="button" onClick={() => handleRemoveItem(data)}>
-        -
-      </div>
-    </div>
+      <td>
+        <div className="button" onClick={() => handleAddItem(data)}>
+          +
+        </div>
+      </td>
+      <td>
+        <div className="button" onClick={() => handleRemoveItem(data)}>
+          -
+        </div>
+      </td>
+    </tr>
   );
 };
 
